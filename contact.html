@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            padding: 30px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 7px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Contact Us</h2>
+
+    <?php if (!empty($successMessage)) { ?>
+        <p class="message"><?php echo $successMessage; ?></p>
+    <?php } ?>
+
+    <form action="contact.php" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="you@example.com" required>
+
+        <label>Subject:</label>
+        <input type="text" name="subject" placeholder="Subject" required>
+
+        <label>Message:</label>
+        <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+
+</body>
+</html>

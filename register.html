@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Registration</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #8dbab9;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      padding-bottom: 10px;
+      color: white;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .nav-button {
+      background-color: #ffffff;
+      color: #00cec9;
+      padding: 8px 16px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .nav-button:hover {
+      background-color: #00cec9;
+      color: white;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: black;
+    }
+
+    label {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: black;
+    }
+
+    input {
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #00cec9;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #019a96;
+    }
+
+    footer {
+      background-color: #3f4443;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+  </style>
+
+  <script>
+
+function validateEmail() {
+  const email = document.getElementById("email").value;
+  const emailMsg = document.getElementById("email_message");
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (email === "") {
+    emailMsg.textContent = "";
+  } else if (!regex.test(email)) {
+    emailMsg.textContent = "Invalid email format.";
+  } else {
+    emailMsg.textContent = "";
+  }
+}
+
+function validatePassword() {
+  const password = document.getElementById("password").value;
+  const passwordMsg = document.getElementById("password_message");
+
+  const   confirm_password = document.getElementById("password").value;
+  const confirm_passwordMsg = document.getElementById("password_message");
+
+  
+  const lowercase = /[a-z]/;
+  const uppercase = /[A-Z]/;
+  const number = /[0-9]/;
+
+  if (password.length === 0) {
+    passwordMsg.textContent = "";
+  } else if (password.length < 5) {
+    passwordMsg.textContent = "Must be at least 5 characters.";
+  } else if (!lowercase.test(password)) {
+    passwordMsg.textContent = "Must include a lowercase letter.";
+  } else if (!uppercase.test(password)) {
+    passwordMsg.textContent = "Must include an uppercase letter.";
+  } else if (!number.test(password)) {
+    passwordMsg.textContent = "Must include a number.";
+  } else {
+    passwordMsg.textContent = "";
+  }
+}
+
+
+
+    function validateRegisterForm() {
+      const password = document.getElementById("password").value;
+      const confirm = document.getElementById("confirm_password").value;
+
+      if (password !== confirm) {
+        alert("Passwords do not match.");
+        return false;
+      }
+      return true;
+    }
+
+
+
+    
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Med Visit</h1>
+    <nav>
+      <ul>
+        <li><a class="nav-button" href="index.html">Home</a></li>
+        <li><a class="nav-button" href="login.html">Login</a></li>
+        <li><a class="nav-button" href="contact.html">Contact</a></li>
+        <li><a class="nav-button" href="admin_login.html">Admin Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <form action="php/register.php" method="POST" onsubmit="return validateRegisterForm()">
+      <h2>User Registration</h2>
+
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required onkeyup="validateEmail()">
+          <p id="email_message" style="color: red; font-size: 12px;"></p>
+
+<label for="password">Password:</label>
+<input type="password" id="password" name="password" required onkeyup="validatePassword()">
+<p id="password_message" style="color: red; font-size: 12px;"></p>
+
+
+
+      <label for="confirm_password">Confirm Password:</label>
+      <input type="password" id="confirm_password" name="confirm_password" required onkeyup="validatePassword()">
+      <p id="confirm_password_message" style="color: red; font-size: 12px;"></p>
+
+      <button type="submit">Register</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Med Visit. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

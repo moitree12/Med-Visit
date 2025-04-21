@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #8dbab9;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      padding-bottom: 10px;
+      color: white;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .nav-button {
+      background-color: #ffffff;
+      color: #00cec9;
+      padding: 8px 16px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .nav-button:hover {
+      background-color: #00cec9;
+      color: white;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: black;
+    }
+
+    label {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: black;
+    }
+
+    input {
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #00cec9;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #019a96;
+    }
+
+    footer {
+      background-color:  #3f4443;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+  </style>
+
+  <script>
+    function validateAdminForm() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username.trim() === "" || password.trim() === "") {
+        alert("Please fill in all fields.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Med Visit</h1>
+    <nav>
+      <ul>
+        <li><a class="nav-button" href="index.html">Home</a></li>
+        <li><a class="nav-button" href="login.html">User Login</a></li>
+        <li><a class="nav-button" href="register.html">Register</a></li>
+        <li><a class="nav-button" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <form action="php/admin_login.php" method="POST" onsubmit="return validateAdminForm()">
+      <h2>Admin Login</h2>
+
+      <label for="username">Admin Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MediSpritus. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
